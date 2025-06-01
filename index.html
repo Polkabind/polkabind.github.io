@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PolkaBind</title>
+  <meta charset="UTF-8">
+  <style type="text/css">
+    body {
+      background-color: #00FF00; /* Neon green background */
+      background-image: url('https://www.w3.org/Style/Examples/007/banana.gif'); /* Tiled banana gif */
+      color: #000080; /* Navy text */
+      font-family: "Courier New", Courier, monospace;
+      font-size: 14px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #FF00FF; /* Magenta headers */
+      text-shadow: 1px 1px #000000;
+    }
+    hr {
+      border: 1px dashed #FF0000; /* Red dashed divider */
+    }
+    .container {
+      width: 800px;
+      margin: 0 auto;
+      background-color: #FFFFFF;
+      border: 4px double #0000FF; /* Blue double border */
+      padding: 10px;
+    }
+    .section {
+      margin-bottom: 20px;
+      padding: 5px;
+      background-color: #FFFFE0; /* Light yellow */
+      border: 2px inset #808080; /* Gray inset */
+    }
+    .button {
+      background-color: #FFCC00; /* Yellow button */
+      color: #000000;
+      border: 2px outset #808080;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .button:hover {
+      border-style: inset;
+    }
+    .blink {
+      animation: blinker 1s step-start infinite;
+    }
+    @keyframes blinker {
+      50% { opacity: 0; }
+    }
+    .marquee {
+      margin: 10px 0;
+    }
+    a {
+      color: #0000FF; /* Blue links */
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 30px;
+    }
+    .roadmap-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .roadmap-table th, .roadmap-table td {
+      border: 1px solid #000000;
+      padding: 5px;
+      text-align: left;
+    }
+    .roadmap-table th {
+      background-color: #FFCCCC; /* Light red */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><font size="+3">Welcome to PolkaBind</font></h1>
+    <div class="marquee">
+      <marquee behavior="alternate" scrollamount="5" loop="infinite">
+        <font color="#FF0000"><strong><blink>UNDER CONSTRUCTION &ndash; WORK IN PROGRESS</blink></strong></font>
+      </marquee>
+    </div>
+
+    <div class="section">
+      <h2><font color="#008000">Project Status</font></h2>
+      <p>
+        <font color="#FF0000"><strong>⚠️ This project is a work in progress! ⚠️</strong></font><br>
+        We are actively developing the PolkaBind library. Expect missing features, breaking changes, and placeholder documentation.
+        Stay tuned for new updates as we build out core functionality.
+      </p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+      <h2><font color="#0000CD">Purpose &amp; Goals</font></h2>
+      <ul>
+        <li><strong>Purpose:</strong> Provide a <em>Rust-based UniFFI library</em> for the Polkadot/Substrate ecosystem so that native iOS, Android, and desktop apps can integrate with Polkadot without writing custom FFI or SCALE‐codec code.</li>
+        <li><strong>Goals:</strong>
+          <ul>
+            <li>Expose essential wallet functionality (<em>import existing wallet, derive accounts, query balances, build &amp; sign transfers, submit extrinsics</em>).</li>
+            <li>Make Polkadot integration as easy as adding a single package to any Swift/Kotlin project.</li>
+            <li>Maintain a single source of truth in Rust, ensuring consistent cryptography &amp; SCALE encoding across all platforms.</li>
+            <li>Offer an upgrade path to on‐device light‐client support (via SmolDOT) in future releases.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <hr>
+
+    <div class="section">
+      <h2><font color="#00008B">Positioning vs. SubXT &amp; SmolDOT</font></h2>
+      <table class="roadmap-table">
+        <tr>
+          <th>Library</th>
+          <th>Purpose</th>
+          <th>Key Differences</th>
+        </tr>
+        <tr>
+          <td><strong>SubXT</strong></td>
+          <td>High‐level Rust SDK for Polkadot/Susbtrate that wraps JSON‐RPC calls &amp; SCALE encoding.</td>
+          <td>
+            <ul>
+              <li>Designed primarily for Rust backends and CLIs.</li>
+              <li>Requires a remote RPC endpoint (unless you enable light‐client feature).</li>
+              <li>Typed, ergonomic API inside Rust; not natively consumable by Swift/Kotlin without FFI glue.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>SmolDOT</strong></td>
+          <td>Rust‐based, no‐std light client for Polkadot/Substrate; can sync headers, verify finality, and run in‐app.</td>
+          <td>
+            <ul>
+              <li>Provides a fully trust‐minimized client within the app (no external node required).</li>
+              <li>Lower‐level API: you must handle SCALE decoding and extrinsic building manually (unless wrapped by SubXT).</li>
+              <li>Large dependency footprint (libp2p, consensus code) to compile for mobile targets.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>PolkaBind</strong></td>
+          <td>Rust → UniFFI bindings exposing a minimal wallet‐focused Polkadot API for Swift, Kotlin, Python, etc.</td>
+          <td>
+            <ul>
+              <li>Wraps SubXT (default) to expose <em>import wallet</em>, <em>get balance</em>, <em>build &amp; sign transfer</em>, <em>submit tx</em>, <em>subscribe events</em>—all via UniFFI.</li>
+              <li>Optional future feature: compile with <strong>SmolDOT</strong> under the hood for on-device light client.</li>
+              <li>Delivers a single package per language—no additional FFI or bridging required by app developers.</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <hr>
+
+    <div class="section">
+      <h2><font color="#2F4F4F">Roadmap</font></h2>
+      <table class="roadmap-table">
+        <tr>
+          <th>Phase</th>
+          <th>Timeline</th>
+          <th>Objectives</th>
+        </tr>
+        <tr>
+          <td><strong>Phase 0: Initialization</strong></td>
+          <td>Q2 2025</td>
+          <td>
+            <ul>
+              <li>Set up GitHub organization (<em>PolkaBind</em>).</li>
+              <li>Create initial Rust crate with UniFFI UDL.</li>
+              <li>Publish v0.1.0: “import wallet” and “get balance” on RPC.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Phase 1: Core Wallet APIs</strong></td>
+          <td>Q3 2025</td>
+          <td>
+            <ul>
+              <li>Implement <em>build &amp; sign transfer</em> and <em>submit extrinsic</em>.</li>
+              <li>Expose <em>subscribe to events</em> (e.g. <code>balances.Transfer</code>) in UDL.</li>
+              <li>Publish Swift &amp; Kotlin packages (v0.2.0).</li>
+              <li><span style="color: #FF0000;"><strong>Work in Progress</strong></span> – some methods may change.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Phase 2: SmolDOT Integration</strong></td>
+          <td>Q4 2025</td>
+          <td>
+            <ul>
+              <li>Add a feature flag (<code>--features light-client</code>) to compile SubXT with SmolDOT backend.</li>
+              <li>Expose <em>on-device finality verification</em> methods (e.g. <code>syncHeaders</code>, <code>verifyBlock</code>).</li>
+              <li>Publish v0.3.0: “RPC + Light-Client” universal SDK.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Phase 3: Ecosystem Growth</strong></td>
+          <td>2026</td>
+          <td>
+            <ul>
+              <li>Documentation portal (on <code>polkabind.dev/docs</code>).</li>
+              <li>Community contributions: add support for <em>staking</em>, <em>governance</em>, <em>parachains</em>.</li>
+              <li>Release v1.0.0: Stable API, production-ready for multiple use cases.</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+
+      <p><strong>Showcase App:</strong> SPEEM Mobile (built on PolkaBind)<br>
+          &nbsp;&nbsp;– A reference wallet/demo app illustrating how to call <code>PolkaBind.getBalance(…)</code>, <code>PolkaBind.transfer(…)</code>, and more. <em>See <a href="https://github.com/speemapp/speem">speemapp/speem</a>.</em></p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+      <h2><font color="#8B008B">Developer Information</font></h2>
+      <p>
+        <strong>Lead Developer:</strong> Wassim Mansouri<br>
+        <ul>
+          <li>GitHub: <a href="https://github.com/wassimans" target="_blank">github.com/wassimans</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/wassimans" target="_blank">linkedin.com/in/wassimans</a></li>
+          <li>Mastodon: <a href="https://mastodon.social/@wassimans" target="_blank">@wassimans@mastodon.social</a></li>
+          <li>Matrix: <a href="https://matrix.to/#/@wassimans:matrix.org" target="_blank">@wassimans:matrix.org</a></li>
+        </ul>
+      </p>
+      <p>
+        “Building a unified, cross-platform Polkadot library—one bound at a time!”
+      </p>
+    </div>
+
+    <hr>
+
+    <div class="footer">
+      <p>
+        <font size="-1">© 2025 PolkaBind Project. All rights reserved. <blink>UNDER CONSTRUCTION</blink></font>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
