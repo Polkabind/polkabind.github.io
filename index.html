@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>PolkaBind Lib</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    /* Apple-like typography and colors */
+    /* Apple-like typography and minimal design */
     body {
       margin: 0;
       padding: 0;
       background-color: #ffffff;
-      color: #000000;
+      color: #1d1d1f;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
     }
@@ -37,26 +37,27 @@
     header h1 {
       font-size: 48px;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     header p {
       font-size: 18px;
-      color: #333333;
-      margin: 8px 0;
+      color: #3c3c4399;
+      margin: 4px 0;
     }
     .hero-btn {
       display: inline-block;
       margin-top: 24px;
       padding: 12px 32px;
-      background-color: #f5f5f7;
+      background-color: #f2f2f7;
       color: #0071e3;
       border-radius: 8px;
       font-size: 16px;
       font-weight: 500;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s;
     }
     .hero-btn:hover {
-      background-color: #e0e0e5;
+      background-color: #e5e5ea;
+      transform: translateY(-2px);
     }
 
     /* Section Titles */
@@ -67,71 +68,70 @@
       font-size: 24px;
       font-weight: 600;
       margin-bottom: 16px;
-      color: #000000;
-      border-bottom: 1px solid #e0e0e0;
+      color: #1d1d1f;
+      border-bottom: 1px solid #d1d1d6;
       padding-bottom: 8px;
     }
 
-    /* Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+    /* Paragraphs & Lists */
+    p {
+      font-size: 17px;
+      color: #1c1c1e;
+      margin-bottom: 16px;
     }
-    .card {
-      background-color: #f5f5f7;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: box-shadow 0.3s;
+    ul {
+      margin-left: 20px;
+      color: #1c1c1e;
+      font-size: 17px;
     }
-    .card:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-    .card h3 {
-      font-size: 18px;
-      font-weight: 600;
+    li {
       margin-bottom: 8px;
-      color: #000000;
-    }
-    .card p {
-      font-size: 15px;
-      color: #444444;
-      margin: 0;
     }
 
     /* Code Block */
     pre {
-      background-color: #f5f5f7;
+      background-color: #f2f2f7;
       border-radius: 8px;
       padding: 20px;
       overflow-x: auto;
       font-size: 14px;
-      color: #000000;
-      margin: 0;
+      color: #1d1d1f;
+      margin: 0 0 24px 0;
     }
     code {
       font-family: Menlo, Monaco, "Courier New", monospace;
-      color: #000000;
+      color: #1d1d1f;
     }
 
-    /* Roadmap Table */
+    /* Table */
     .roadmap-table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 16px;
+      margin-bottom: 24px;
     }
     .roadmap-table th,
     .roadmap-table td {
       border: 1px solid #d1d1d6;
       padding: 12px;
       text-align: left;
-      font-size: 15px;
-      color: #222222;
+      font-size: 17px;
+      color: #1c1c1e;
     }
     .roadmap-table th {
-      background-color: #f5f5f7;
+      background-color: #f2f2f7;
       font-weight: 600;
+    }
+
+    /* Callout (Under Construction) */
+    .callout {
+      background-color: #fff4e5;
+      border-left: 4px solid #ff9500;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 8px;
+      color: #98650f;
+      font-size: 17px;
     }
 
     /* Footer */
@@ -139,7 +139,7 @@
       text-align: center;
       padding: 40px 20px;
       font-size: 14px;
-      color: #666666;
+      color: #3c3c4399;
     }
     footer a {
       color: #0071e3;
@@ -152,179 +152,163 @@
   <header>
     <h1>PolkaBind Lib</h1>
     <p><strong>Rust → UniFFI Polkadot SDK</strong></p>
-    <p>Native Swift &amp; Kotlin packages for seamless Polkadot integration</p>
+    <p>Native Swift & Kotlin packages for seamless Polkadot integration</p>
     <a href="#workflow" class="hero-btn">View Demo Workflow</a>
   </header>
 
   <div class="container">
+    <div class="callout">
+      <strong>⚠️ Under Construction – Work in Progress</strong><br>
+      We are actively developing PolkaBind. Expect missing features, breaking changes, and placeholder documentation. Stay tuned for updates as we enhance core functionality.
+    </div>
+
     <section id="about">
-      <h2>About This Demo</h2>
+      <h2>Project Status</h2>
       <p>
-        SPEEM is a demonstration wallet built entirely with <a href="https://polkabind.dev" target="_blank">PolkaBind Lib</a>.
-        Instead of embedding a shared Rust core, SPEEM installs PolkaBind’s Swift and Kotlin packages to manage Substrate RPC calls, key derivation, SCALE encoding, and transaction signing.
-        All wallet logic is written natively in SwiftUI (for iOS) and Jetpack Compose (for Android), showcasing how PolkaBind simplifies cross‐platform development.
-      </p>
-      <p>
-        <strong>Work in Progress:</strong> APIs and UI may change as PolkaBind evolves. SPEEM always reflects the latest PolkaBind release.
+        PolkaBind is an evolving SDK. Current features may change, and new capabilities will be added over time. We encourage community feedback and contributions to help shape the library.
       </p>
     </section>
 
-    <section id="stack">
-      <h2>Tech Stack</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>PolkaBind Lib</h3>
-          <p>
-            Swift &amp; Kotlin packages generated via UniFFI from SubXT. Provide methods like <code>getBalance()</code>, <code>buildSignedTransfer()</code>, <code>submitExtrinsic()</code>, and more.
-          </p>
-        </div>
-        <div class="card">
-          <h3>iOS (SwiftUI)</h3>
-          <p>
-            Uses <code>PolkaBind.getBalance()</code> and <code>PolkaBind.transfer()</code> directly. Implements native UI for scanning QR codes, confirming payments, and viewing history.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Android (Jetpack Compose)</h3>
-          <p>
-            Calls <code>PolkaBind.getBalance()</code> and <code>PolkaBind.transfer()</code> via Kotlin bindings. Native UI for QR scanning, transaction review, and history.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="workflow">
-      <h2>Demo Workflow</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>1. Install PolkaBind Package</h3>
-          <p>
-            Add <code>PolkaBind</code> to your Podfile (iOS) or Gradle (Android), then run <code>pod install</code> or <code>gradle sync</code>.
-          </p>
-        </div>
-        <div class="card">
-          <h3>2. Initialize Client</h3>
-          <p>
-            Call <code>PolkaBind.initClient("wss://rpc.polkadot.io")</code> in your app’s startup logic.
-          </p>
-        </div>
-        <div class="card">
-          <h3>3. Build &amp; Sign</h3>
-          <p>
-            Use <code>PolkaBind.buildSignedTransfer(to, amount, seed)</code> to obtain a signed extrinsic blob.
-          </p>
-        </div>
-        <div class="card">
-          <h3>4. Submit &amp; Monitor</h3>
-          <p>
-            Submit via <code>PolkaBind.submitExtrinsic(blob)</code> and display finality notifications when confirmed.
-          </p>
-        </div>
-      </div>
+    <section id="purpose">
+      <h2>Purpose &amp; Goals</h2>
+      <ul>
+        <li><strong>Purpose:</strong> Provide a <em>Rust-based UniFFI library</em> for the Polkadot/Substrate ecosystem so that native iOS, Android, and desktop apps can integrate with Polkadot without custom FFI or manual SCALE encoding.</li>
+        <li><strong>Goals:</strong>
+          <ul>
+            <li>Expose essential wallet functions: <em>import existing wallet, derive accounts, query balances, build &amp; sign transfers, submit extrinsics</em>.</li>
+            <li>Make Polkadot integration as simple as adding a single package to any Swift or Kotlin project.</li>
+            <li>Maintain a single source of truth in Rust, ensuring consistent cryptography and SCALE encoding across all platforms.</li>
+            <li>Offer an upgrade path to on-device light-client support via SmolDOT in future releases.</li>
+          </ul>
+        </li>
+      </ul>
     </section>
 
     <section id="positioning">
       <h2>Positioning vs. SubXT &amp; SmolDOT</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>SubXT</h3>
-          <p>
-            A Rust SDK for Polkadot that wraps JSON-RPC and SCALE encoding. Requires Rust FFI to use natively; not directly consumable by Swift/Kotlin.
-          </p>
-        </div>
-        <div class="card">
-          <h3>SmolDOT</h3>
-          <p>
-            A no-std Rust light client. On-device verification is possible but requires manual JNI/Swift bridges. Larger footprint.
-          </p>
-        </div>
-        <div class="card">
-          <h3>PolkaBind Lib</h3>
-          <p>
-            Uses UniFFI to generate Swift &amp; Kotlin packages from SubXT (or future SmolDOT). Provides a minimal wallet API out of the box so native apps never write their own FFI.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="getting-started">
-      <h2>Get Started</h2>
-      <pre><code># iOS (Swift Package Manager)
-# In Package.swift:
-.package(
-  name: "PolkaBind",
-  url: "https://github.com/PolkaBind/uniffi-polkadot-sdk-swift.git",
-  from: "0.2.0"
-)
-
-# Then in your Swift code:
-import PolkaBind
-
-let status = PolkaBind.initClient("wss://rpc.polkadot.io")
-if status == .Ok {
-  let balance = PolkaBind.getBalance("5AbC…xyz")
-  print("Free: \(balance.free), Reserved: \(balance.reserved)")
-}
-
-# Android (Gradle)
-# In build.gradle (app module):
-implementation "com.polkabind:polkabind-sdk:0.2.0"
-
-# Then in Kotlin:
-val status = PolkaBind.initClient("wss://rpc.polkadot.io")
-if (status == ErrorCode.Ok) {
-    val acct = PolkaBind.getBalance("5AbC…xyz")
-    println("Free: ${acct.free}, Reserved: ${acct.reserved}")
-}</code></pre>
+      <table class="roadmap-table">
+        <tr>
+          <th>Library</th>
+          <th>Purpose</th>
+          <th>Key Differences</th>
+        </tr>
+        <tr>
+          <td><strong>SubXT</strong></td>
+          <td>High-level Rust SDK for Polkadot/Substrate that wraps JSON-RPC calls and SCALE encoding.</td>
+          <td>
+            <ul>
+              <li>Designed primarily for Rust backends and CLI tools.</li>
+              <li>Requires a remote RPC endpoint (unless built with light-client feature).</li>
+              <li>Ergonomic Rust API; not natively consumable by Swift/Kotlin without FFI glue.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>SmolDOT</strong></td>
+          <td>Rust-based, no-std light-client for Polkadot/Substrate; can sync headers, verify finality, and run in-app.</td>
+          <td>
+            <ul>
+              <li>Provides a fully trust-minimized client on the device (no external node required).</li>
+              <li>Lower-level API—developers handle SCALE decoding and extrinsic construction manually (unless wrapped by SubXT).</li>
+              <li>Larger dependency footprint (libp2p, consensus code) when targeting mobile platforms.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>PolkaBind Lib</strong></td>
+          <td>Rust → UniFFI bindings exposing a minimal, wallet-focused Polkadot API for Swift, Kotlin, Python, etc.</td>
+          <td>
+            <ul>
+              <li>Wraps SubXT (by default) to expose <em>importWallet</em>, <em>getBalance</em>, <em>buildSignedTransfer</em>, <em>submitExtrinsic</em>, <em>subscribeEvents</em>—all via UniFFI.</li>
+              <li>Optional future feature: compile with <strong>SmolDOT</strong> for on-device light-client support.</li>
+              <li>Delivers a single package per target language—no extra FFI or bridging required by app developers.</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
     </section>
 
     <section id="roadmap">
       <h2>Roadmap</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>v0.1 – PolkaBind Core (SubXT)</h3>
-          <p>
-            • Expose <code>initClient</code>, <code>getBalance</code>, <code>buildSignedTransfer</code>, <code>submitExtrinsic</code>.
-            • Publish Swift &amp; Kotlin packages.
-            • SPEEM uses v0.1 to demonstrate basic transfers.
-          </p>
-        </div>
-        <div class="card">
-          <h3>v0.2 – Event Subscriptions &amp; Notifications</h3>
-          <p>
-            • Add <code>subscribeEvents</code> for <code>balances.Transfer</code>.
-            • Merge in SPEEM finality UI.
-            • Improve error handling and retries.
-          </p>
-        </div>
-        <div class="card">
-          <h3>v0.3 – SmolDOT Light‐Client Flag</h3>
-          <p>
-            • Introduce <code>light-client</code> feature to compile SubXT with SmolDOT.
-            • Expose <code>syncHeaders()</code> &amp; <code>verifyBlock()</code>.
-            • Update SPEEM to optionally run fully on-device.
-          </p>
-        </div>
-        <div class="card">
-          <h3>v1.0 – Stable Release &amp; App Store Launch</h3>
-          <p>
-            • Polish PolkaBind API, finalize docs.
-            • Publish to CocoaPods &amp; Maven Central.
-            • Distribute SPEEM on App Store and Play Store.
-          </p>
-        </div>
-      </div>
-      <p style="margin-top: 24px; font-size: 15px; color: #444444;">
-        <strong>Note:</strong> SPEEM is only a demonstration. All Polkadot logic lives in PolkaBind Lib.
+      <table class="roadmap-table">
+        <tr>
+          <th>Phase</th>
+          <th>Timeline</th>
+          <th>Objectives</th>
+        </tr>
+        <tr>
+          <td><strong>Phase 0: Initialization</strong></td>
+          <td>Q2 2025</td>
+          <td>
+            <ul>
+              <li>Set up PolkaBind GitHub organization.</li>
+              <li>Create initial Rust crate with UniFFI UDL.</li>
+              <li>Publish v0.1.0: <code>importWallet</code> &amp; <code>getBalance</code> (RPC).</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Phase 1: Core Wallet APIs</strong></td>
+          <td>Q3 2025</td>
+          <td>
+            <ul>
+              <li>Implement <em>buildSignedTransfer</em> and <em>submitExtrinsic</em>.</li>
+              <li>Expose <em>subscribeEvents</em> (e.g., <code>balances.Transfer</code>) via UDL.</li>
+              <li>Publish Swift &amp; Kotlin packages (v0.2.0).</li>
+              <li><span style="color: #ff3b30;"><strong>Work in Progress</strong></span>—APIs may change.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Phase 2: SmolDOT Integration</strong></td>
+          <td>Q4 2025</td>
+          <td>
+            <ul>
+              <li>Add <code>--features light-client</code> to compile SubXT with SmolDOT backend.</li>
+              <li>Expose on-device finality methods: <code>syncHeaders()</code>, <code>verifyBlock()</code>.</li>
+              <li>Publish v0.3.0: “RPC + Light-Client” universal SDK.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Phase 3: Ecosystem Growth</strong></td>
+          <td>2026</td>
+          <td>
+            <ul>
+              <li>Launch documentation portal at <a href="https://polkabind.dev/docs" target="_blank">polkabind.dev/docs</a>.</li>
+              <li>Invite community contributions for staking, governance, parachain support.</li>
+              <li>Release v1.0.0: Stable API for production use.</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <p style="margin-top: 24px; font-size: 17px; color: #1c1c1e;">
+        <strong>Showcase App:</strong> SPEEM Mobile (built on PolkaBind) – a reference wallet demonstrating <code>PolkaBind.getBalance(…)</code>, <code>PolkaBind.transfer(…)</code>, and more.
+        See <a href="https://github.com/speemapp/speem" target="_blank">speemapp/speem</a>.
+      </p>
+    </section>
+
+    <section id="developer">
+      <h2>Developer Information</h2>
+      <p>
+        <strong>Lead Developer:</strong> Wassim Mansouri<br>
+        <ul>
+          <li>GitHub: <a href="https://github.com/wassimans" target="_blank">github.com/wassimans</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/wassimans" target="_blank">linkedin.com/in/wassimans</a></li>
+          <li>Mastodon: <a href="https://mastodon.social/@wassimans" target="_blank">@wassimans@mastodon.social</a></li>
+          <li>Matrix: <a href="https://matrix.to/#/@wassimans:matrix.org" target="_blank">@wassimans:matrix.org</a></li>
+        </ul>
+      </p>
+      <p style="font-size: 17px; color: #1c1c1e;">
+        “Building a unified, cross-platform Polkadot library—one bound at a time!”
       </p>
     </section>
   </div>
 
   <footer>
     <p>
-      Created by <a href="https://github.com/wassimans" target="_blank">Wassim Mansouri</a> • © 2025 PolkaBind Project • <a href="https://polkabind.dev" target="_blank">polkabind.dev</a>
+      © 2025 PolkaBind Project. All rights reserved.
     </p>
   </footer>
-
 </body>
 </html>
