@@ -1,313 +1,536 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PolkaBind Lib</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /* Apple-like typography and minimal design */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-      color: #1d1d1f;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-    }
-    a {
-      color: #0071e3;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>PolkaBind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        color: #1d1d1f;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+      }
+      a {
+        color: #0071e3;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
 
-    /* Container */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
+      /* Container */
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
 
-    /* Header */
-    header {
-      text-align: center;
-      padding: 60px 20px 40px;
-    }
-    header h1 {
-      font-size: 48px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    header p {
-      font-size: 18px;
-      color: #3c3c4399;
-      margin: 4px 0;
-    }
-    .hero-btn {
-      display: inline-block;
-      margin-top: 24px;
-      padding: 12px 32px;
-      background-color: #f2f2f7;
-      color: #0071e3;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 500;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-    .hero-btn:hover {
-      background-color: #e5e5ea;
-      transform: translateY(-2px);
-    }
+      /* Header */
+      header {
+        text-align: center;
+        padding: 60px 20px 40px;
+      }
+      header h1 {
+        font-size: 48px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      header p {
+        font-size: 18px;
+        color: #3c3c4399;
+        margin: 4px 0;
+      }
+      .hero-btn {
+        display: inline-block;
+        margin-top: 24px;
+        padding: 12px 32px;
+        background-color: #f2f2f7;
+        color: #0071e3;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        transition:
+          background-color 0.3s,
+          transform 0.3s;
+      }
+      .hero-btn:hover {
+        background-color: #e5e5ea;
+        transform: translateY(-2px);
+      }
 
-    /* Section Titles */
-    section {
-      margin-top: 60px;
-    }
-    h2 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 16px;
-      color: #1d1d1f;
-      border-bottom: 1px solid #d1d1d6;
-      padding-bottom: 8px;
-    }
+      /* Section Titles */
+      section {
+        margin-top: 60px;
+      }
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #1d1d1f;
+        border-bottom: 1px solid #d1d1d6;
+        padding-bottom: 8px;
+      }
 
-    /* Paragraphs & Lists */
-    p {
-      font-size: 17px;
-      color: #1c1c1e;
-      margin-bottom: 16px;
-    }
-    ul {
-      margin-left: 20px;
-      color: #1c1c1e;
-      font-size: 17px;
-    }
-    li {
-      margin-bottom: 8px;
-    }
+      /* Paragraphs & Lists */
+      p {
+        font-size: 17px;
+        color: #1c1c1e;
+        margin-bottom: 16px;
+      }
+      ul {
+        margin-left: 20px;
+        color: #1c1c1e;
+        font-size: 17px;
+      }
+      li {
+        margin-bottom: 8px;
+      }
 
-    /* Code Block */
-    pre {
-      background-color: #f2f2f7;
-      border-radius: 8px;
-      padding: 20px;
-      overflow-x: auto;
-      font-size: 14px;
-      color: #1d1d1f;
-      margin: 0 0 24px 0;
-    }
-    code {
-      font-family: Menlo, Monaco, "Courier New", monospace;
-      color: #1d1d1f;
-    }
+      /* Code Block */
+      pre {
+        background-color: #f2f2f7;
+        border-radius: 8px;
+        padding: 20px;
+        overflow-x: auto;
+        font-size: 14px;
+        color: #1d1d1f;
+        margin: 0 0 24px 0;
+      }
+      code {
+        font-family: Menlo, Monaco, "Courier New", monospace;
+        color: #1d1d1f;
+      }
 
-    /* Table */
-    .roadmap-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 16px;
-      margin-bottom: 24px;
-    }
-    .roadmap-table th,
-    .roadmap-table td {
-      border: 1px solid #d1d1d6;
-      padding: 12px;
-      text-align: left;
-      font-size: 17px;
-      color: #1c1c1e;
-    }
-    .roadmap-table th {
-      background-color: #f2f2f7;
-      font-weight: 600;
-    }
+      /* Table */
+      .feature-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+        margin-bottom: 24px;
+      }
+      .feature-table th,
+      .feature-table td {
+        border: 1px solid #d1d1d6;
+        padding: 12px;
+        text-align: left;
+        font-size: 17px;
+        color: #1c1c1e;
+      }
+      .feature-table th {
+        background-color: #f2f2f7;
+        font-weight: 600;
+      }
 
-    /* Callout (Under Construction) */
-    .callout {
-      background-color: #fff4e5;
-      border-left: 4px solid #ff9500;
-      padding: 16px 20px;
-      margin-bottom: 32px;
-      border-radius: 8px;
-      color: #98650f;
-      font-size: 17px;
-    }
+      /* Callout (Under Construction) */
+      .callout {
+        background-color: #fff4e5;
+        border-left: 4px solid #ff9500;
+        padding: 16px 20px;
+        margin-bottom: 32px;
+        border-radius: 8px;
+        color: #98650f;
+        font-size: 17px;
+      }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 14px;
-      color: #3c3c4399;
-    }
-    footer a {
-      color: #0071e3;
-      font-weight: 500;
-    }
-  </style>
-</head>
-<body>
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 40px 20px;
+        font-size: 14px;
+        color: #3c3c4399;
+      }
+      footer a {
+        color: #0071e3;
+        font-weight: 500;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "forest",
+        securityLevel: "loose",
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>PolkaBind</h1>
+      <p>
+        <strong
+          >Seamless interaction with any Polkadot SDK based chain for Swift,
+          Kotlin, Javascript, Python and more!</strong
+        >
+      </p>
+    </header>
 
-  <header>
-    <h1>PolkaBind Lib</h1>
-    <p><strong>Rust → UniFFI Polkadot Library</strong></p>
-    <p>Native Swift & Kotlin (and more!) packages for seamless Polkadot integration</p>
-  </header>
+    <div class="container">
+      <div class="callout">
+        <strong>⚠️ Under Construction – Work in Progress ⚠️</strong><br />
+        We are actively developing PolkaBind. Expect missing features, breaking
+        changes, and placeholder documentation. Stay tuned for updates as we
+        enhance core functionality.
+      </div>
 
-  <div class="container">
-    <div class="callout">
-      <strong>⚠️ Under Construction – Work in Progress</strong><br>
-      We are actively developing PolkaBind. Expect missing features, breaking changes, and placeholder documentation. Stay tuned for updates as we enhance core functionality.
+      <section id="about">
+        <h2>Project Overview</h2>
+        <p>
+          <strong>Polkabind</strong> is a library that opens the Polkadot
+          ecosystem to programming languages other than Rust. It exposes mainly
+          standard wallet-level functionality (key management, balance queries,
+          extrinsic building, signing, RPC, event subscriptions and more) to
+          other languages (Swift, Kotlin, Python, Javascript and more) by
+          exposing Parity's
+          <strong
+            ><a href="https://github.com/paritytech/subxt" target="_blank"
+              >Subxt</a
+            ></strong
+          >
+          library through FFI (foreign language interface).
+        </p>
+
+        <p>
+          <strong>Polkabind</strong> achieves this in a different way:
+          <em
+            >leveraging <strong>Subxt</strong> to other programming languages
+            (the official and established library to interact with Polkadot SDK
+            chains), instead of reinventing it or a subset of its API scope from
+            scratch</em
+          >.
+        </p>
+      </section>
+
+      <section id="purpose">
+        <h2>High Level Detaikls</h2>
+        <p>
+          <strong>Polkabind</strong> tries to open the Polkadot ecosystem to
+          other languages in a smart way by:
+        </p>
+        <ul>
+          <li>
+            <strong
+              >Creating a Rust façade/abstraction on top of Subxt
+              itself:</strong
+            >
+            we use <em>Subxt</em>, we don't replace it. Subxt is our source of
+            truth. The façade exposes mainly standard wallet-level
+            functionality, developed in <em>Rust</em>, the language Subxt is
+            developed in, achieving absolute compatibility with Subxt's API and
+            data types.
+          </li>
+          <li>
+            <strong>Simplifying the developer experience:</strong> instead of
+            crafting a big block of code using Subxt to do a simple transfer,
+            Polkabind abstracts it to be a simple function exposed to other
+            languages.
+          </li>
+          <li>
+            <strong
+              >The façade is ported to other languages through FFI:</strong
+            >
+            the standard bridge between Rust and most runtimes. Polkabind uses
+            <a
+              href="https://mozilla.github.io/uniffi-rs/latest/"
+              target="_blank"
+              >Mozilla's UniFFI</a
+            >
+            to generate foreign-language bindings for the Rust API that the
+            façade exposes, instead of annotating Subxt's code itself, this way
+            we achieve real separation of concern between our code (Polkabind
+            API) and code we depend on (Subxt).
+          </li>
+          <li>
+            <strong
+              >Polkabind will produce small ready-to-import libraries:</strong
+            >
+            for major languages: Swift, Kotlin, Nodejs, Python and more. And
+            later, those libraries will be published to each language package
+            manager's repository: for Nodejs, it will be as simple as
+            <em>npm install @polkabind/latest</em>.
+          </li>
+          <li>
+            <strong>An update to Subxt is an update to Polkabind:</strong> if
+            Polkabind API is impacted by some Subxt update, a simple update to
+            Polkabind automatically propagates to every supported language
+            through our CI, producing updated packages.
+          </li>
+        </ul>
+      </section>
+
+      <section id="positioning">
+        <h2>Positioning vs. Subxt</h2>
+        <p>
+          <strong>Polkabind</strong> <em>is not</em> a
+          <strong>Subxt</strong> replacement, nor it tries to reimplement it or
+          a subset of its features in other languages.
+        </p>
+
+        <p><strong>Polkabind</strong> is <em>three things</em>:</p>
+        <ul>
+          <li>
+            1. a native binary that leverages Subxt wrapped by Polkabind's
+            developer oriented API (façade).
+          </li>
+          <li>
+            2. a library in the foreign language generated to stand as a
+            communication medium between client code in the foreign language and
+            the binary.
+          </li>
+          <li>
+            3. a CI pipeline, that packages and pushes ready to import packages
+            for every supported language automatically on every push on the
+            Polkabind main repository.
+          </li>
+        </ul>
+
+        <br />
+        <br />
+
+        <div class="mermaid">
+          flowchart TB subgraph Polkabind["Polkabind"] direction TB A1[Uses
+          Subxt under the hood]:::concept A2[Exposes a simple developer-oriented
+          API/façade]:::concept A1 --> A2 end subgraph Components["Polkabind
+          Consists Of"] direction TB B1[Native binary = Rust façade +
+          Subxt]:::component B2[Generated foreign-language library FFI
+          bindings]:::component B3[CI pipeline Auto-package &
+          publish]:::component end subgraph CI["CI Pipeline"] direction TB C1[On
+          push to main repo] C2[Build binary & generate bindings] C3[Create and
+          tag language packages] C4[Publish packages to registries] C1 --> C2
+          --> C3 --> C4 end Polkabind --> Components --> CI classDef concept
+          fill:#fff4e5,stroke:#ffa726,stroke-width:1px; classDef component
+          fill:#e3f2fd,stroke:#42a5f5,stroke-width:1px;
+        </div>
+      </section>
+
+      <section id="features">
+        <h2>Features & Tasks</h2>
+        <p>
+          This is the overall scope of wallet-level API that Polkabind aims to
+          deliver in the v1.0. The API will be developped in Rust, using Subxt
+          under the hood, and exposed to <strong>Swift</strong> and
+          <string>Kotlin</string>.
+        </p>
+        <table class="feature-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Feature / Task</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Account</strong></td>
+              <td>Generate mnemonic</td>
+            </tr>
+            <tr>
+              <td><strong>Account</strong></td>
+              <td>Derive seed</td>
+            </tr>
+            <tr>
+              <td><strong>Account</strong></td>
+              <td>Import JSON keystore</td>
+            </tr>
+            <tr>
+              <td><strong>Account</strong></td>
+              <td>Export JSON keystore</td>
+            </tr>
+            <tr>
+              <td><strong>Account</strong></td>
+              <td>Decode derivation path</td>
+            </tr>
+            <tr>
+              <td><strong>Address</strong></td>
+              <td>SS58 encode</td>
+            </tr>
+            <tr>
+              <td><strong>Address</strong></td>
+              <td>SS58 decode</td>
+            </tr>
+            <tr>
+              <td><strong>Balance</strong></td>
+              <td>Query balance</td>
+            </tr>
+            <tr>
+              <td><strong>Balance</strong></td>
+              <td>Subscribe to balance changes</td>
+            </tr>
+            <tr>
+              <td><strong>Transfer</strong></td>
+              <td>Submit a transfer</td>
+            </tr>
+            <tr>
+              <td><strong>Transfer</strong></td>
+              <td>Track extrinsic status</td>
+            </tr>
+            <tr>
+              <td><strong>Staking</strong></td>
+              <td>Bond funds</td>
+            </tr>
+            <tr>
+              <td><strong>Staking</strong></td>
+              <td>Unbond funds</td>
+            </tr>
+            <tr>
+              <td><strong>Staking</strong></td>
+              <td>Nominate validators</td>
+            </tr>
+            <tr>
+              <td><strong>Staking</strong></td>
+              <td>Withdraw unbonded</td>
+            </tr>
+            <tr>
+              <td><strong>Subscription</strong></td>
+              <td>RPC connect</td>
+            </tr>
+            <tr>
+              <td><strong>Subscription</strong></td>
+              <td>RPC disconnect</td>
+            </tr>
+            <tr>
+              <td><strong>Subscription</strong></td>
+              <td>JSON-RPC request</td>
+            </tr>
+            <tr>
+              <td><strong>Subscription</strong></td>
+              <td>Subscribe to storage changes</td>
+            </tr>
+            <tr>
+              <td><strong>Metadata</strong></td>
+              <td>Fetch runtime metadata</td>
+            </tr>
+            <tr>
+              <td><strong>Fees &amp; Dry-Run</strong></td>
+              <td>Estimate transaction fee</td>
+            </tr>
+            <tr>
+              <td><strong>Fees &amp; Dry-Run</strong></td>
+              <td>Perform dry-run (payment query)</td>
+            </tr>
+            <tr>
+              <td><strong>Multisig</strong></td>
+              <td>Create multisig call</td>
+            </tr>
+            <tr>
+              <td><strong>Multisig</strong></td>
+              <td>Approve multisig</td>
+            </tr>
+            <tr>
+              <td><strong>Multisig</strong></td>
+              <td>Execute multisig</td>
+            </tr>
+            <tr>
+              <td><strong>Batch</strong></td>
+              <td>Batch multiple calls</td>
+            </tr>
+            <tr>
+              <td><strong>Governance</strong></td>
+              <td>Submit democracy proposal</td>
+            </tr>
+            <tr>
+              <td><strong>Governance</strong></td>
+              <td>Vote on referendum</td>
+            </tr>
+            <tr>
+              <td><strong>Assets &amp; Tokens</strong></td>
+              <td>Transfer arbitrary asset</td>
+            </tr>
+            <tr>
+              <td><strong>Assets &amp; Tokens</strong></td>
+              <td>Query asset balance</td>
+            </tr>
+            <tr>
+              <td><strong>Chain Info</strong></td>
+              <td>Get chain properties</td>
+            </tr>
+            <tr>
+              <td><strong>Chain Info</strong></td>
+              <td>Get runtime version</td>
+            </tr>
+            <tr>
+              <td><strong>Events</strong></td>
+              <td>Subscribe to system events</td>
+            </tr>
+            <tr>
+              <td><strong>Block &amp; Heads</strong></td>
+              <td>Subscribe to new heads</td>
+            </tr>
+            <tr>
+              <td><strong>Block &amp; Heads</strong></td>
+              <td>Fetch block by hash</td>
+            </tr>
+            <tr>
+              <td><strong>Nonce &amp; Account</strong></td>
+              <td>Query account nonce</td>
+            </tr>
+            <tr>
+              <td><strong>Nonce &amp; Account</strong></td>
+              <td>Query account info</td>
+            </tr>
+            <tr>
+              <td><strong>Genesis &amp; Chain</strong></td>
+              <td>Get genesis hash</td>
+            </tr>
+            <tr>
+              <td><strong>Genesis &amp; Chain</strong></td>
+              <td>Get chain name</td>
+            </tr>
+            <tr>
+              <td><strong>Utility</strong></td>
+              <td>Decode SCALE bytes</td>
+            </tr>
+            <tr>
+              <td><strong>Utility</strong></td>
+              <td>Encode to SCALE bytes</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="developer">
+        <h2>Developer Information</h2>
+
+        <p><strong>Lead Developer:</strong> Wassim Mansouri<br /></p>
+
+        <ul>
+          <li>
+            GitHub:
+            <a href="https://github.com/wassimans" target="_blank"
+              >github.com/wassimans</a
+            >
+          </li>
+          <li>
+            LinkedIn:
+            <a href="https://www.linkedin.com/in/wassimans" target="_blank"
+              >linkedin.com/in/wassimans</a
+            >
+          </li>
+          <li>
+            Mastodon:
+            <a href="https://mastodon.social/@wassimans" target="_blank"
+              >@wassimans@mastodon.social</a
+            >
+          </li>
+          <li>
+            Matrix:
+            <a href="https://matrix.to/#/@wassimans:matrix.org" target="_blank"
+              >@wassimans:matrix.org</a
+            >
+          </li>
+        </ul>
+
+        <p style="font-size: 17px; color: #1c1c1e">
+          “Building a unified, cross-platform Polkadot library, one bound at a
+          time!”
+        </p>
+      </section>
     </div>
 
-    <section id="about">
-      <h2>Project Status</h2>
-      <p>
-        PolkaBind is an evolving library. Current features may change, and new capabilities will be added over time. We encourage community feedback and contributions to help shape the library.
-      </p>
-    </section>
-
-    <section id="purpose">
-      <h2>Purpose &amp; Goals</h2>
-      <ul>
-        <li><strong>Purpose:</strong> Provide a <em>Rust-based UniFFI library</em> for the Polkadot/Substrate ecosystem so that native iOS, Android, and desktop apps can integrate with Polkadot without custom FFI or manual SCALE encoding.</li>
-        <li><strong>Goals:</strong>
-          <ul>
-            <li>Expose essential wallet functions: <em>import existing wallet, derive accounts, query balances, build &amp; sign transfers, submit extrinsics</em>.</li>
-            <li>Make Polkadot integration as simple as adding a single package to any Swift or Kotlin project.</li>
-            <li>Maintain a single source of truth in Rust, ensuring consistent cryptography and SCALE encoding across all platforms.</li>
-            <li>Offer an upgrade path to on-device light-client support via SmolDOT in future releases.</li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-
-    <section id="positioning">
-      <h2>Positioning vs. SubXT &amp; SmolDOT</h2>
-      <table class="roadmap-table">
-        <tr>
-          <th>Library</th>
-          <th>Purpose</th>
-          <th>Key Differences</th>
-        </tr>
-        <tr>
-          <td><strong>SubXT</strong></td>
-          <td>High-level Rust library for Polkadot/Substrate that wraps JSON-RPC calls and SCALE encoding.</td>
-          <td>
-            <ul>
-              <li>Designed primarily for Rust backends and CLI tools.</li>
-              <li>Requires a remote RPC endpoint (unless built with light-client feature).</li>
-              <li>Ergonomic Rust API; not natively consumable by Swift/Kotlin without FFI glue.</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>SmolDOT</strong></td>
-          <td>Rust-based, no-std light-client for Polkadot/Substrate; can sync headers, verify finality, and run in-app.</td>
-          <td>
-            <ul>
-              <li>Provides a fully trust-minimized client on the device (no external node required).</li>
-              <li>Lower-level API—developers handle SCALE decoding and extrinsic construction manually (unless wrapped by SubXT).</li>
-              <li>Larger dependency footprint (libp2p, consensus code) when targeting mobile platforms.</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>PolkaBind Lib</strong></td>
-          <td>Rust → UniFFI bindings exposing a minimal, wallet-focused Polkadot API for Swift, Kotlin, Python, etc.</td>
-          <td>
-            <ul>
-              <li>Wraps SubXT (by default) to expose <em>importWallet</em>, <em>getBalance</em>, <em>buildSignedTransfer</em>, <em>submitExtrinsic</em>, <em>subscribeEvents</em>—all via UniFFI.</li>
-              <li>Optional future feature: compile with <strong>SmolDOT</strong> for on-device light-client support.</li>
-              <li>Delivers a single package per target language—no extra FFI or bridging required by app developers.</li>
-            </ul>
-          </td>
-        </tr>
-      </table>
-    </section>
-
-    <section id="roadmap">
-      <h2>Roadmap</h2>
-      <table class="roadmap-table">
-        <tr>
-          <th>Phase</th>
-          <th>Timeline</th>
-          <th>Objectives</th>
-        </tr>
-        <tr>
-          <td><strong>Phase 0: Initialization</strong></td>
-          <td>Q2 2025</td>
-          <td>
-            <ul>
-              <li>Set up PolkaBind GitHub organization.</li>
-              <li>Create initial Rust crate with UniFFI UDL.</li>
-              <li>Publish v0.1.0: <code>importWallet</code> &amp; <code>getBalance</code> (RPC).</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Phase 1: Core Wallet APIs</strong></td>
-          <td>Q3 2025</td>
-          <td>
-            <ul>
-              <li>Implement <em>buildSignedTransfer</em> and <em>submitExtrinsic</em>.</li>
-              <li>Expose <em>subscribeEvents</em> (e.g., <code>balances.Transfer</code>) via UDL.</li>
-              <li>Publish Swift &amp; Kotlin packages (v0.2.0).</li>
-              <li><span style="color: #ff3b30;"><strong>Work in Progress</strong></span>—APIs may change.</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Phase 2: SmolDOT Integration</strong></td>
-          <td>Q4 2025</td>
-          <td>
-            <ul>
-              <li>Add <code>--features light-client</code> to compile SubXT with SmolDOT backend.</li>
-              <li>Expose on-device finality methods: <code>syncHeaders()</code>, <code>verifyBlock()</code>.</li>
-              <li>Publish v0.3.0: “RPC + Light-Client” universal library.</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Phase 3: Ecosystem Growth</strong></td>
-          <td>2026</td>
-          <td>
-            <ul>
-              <li>Launch documentation portal at <a href="https://polkabind.dev/docs" target="_blank">polkabind.dev/docs</a>.</li>
-              <li>Invite community contributions for staking, governance, parachain support.</li>
-              <li>Release v1.0.0: Stable API for production use.</li>
-            </ul>
-          </td>
-        </tr>
-      </table>
-      <p style="margin-top: 24px; font-size: 17px; color: #1c1c1e;">
-        <strong>Showcase App:</strong> SPEEM Mobile (built on PolkaBind) – a reference wallet demonstrating <code>PolkaBind.getBalance(…)</code>, <code>PolkaBind.transfer(…)</code>, and more.
-        See <a href="https://github.com/speemapp/speem" target="_blank">speemapp/speem</a>.
-      </p>
-    </section>
-
-    <section id="developer">
-      <h2>Developer Information</h2>
-      <p>
-        <strong>Lead Developer:</strong> Wassim Mansouri<br>
-        <ul>
-          <li>GitHub: <a href="https://github.com/wassimans" target="_blank">github.com/wassimans</a></li>
-          <li>LinkedIn: <a href="https://www.linkedin.com/in/wassimans" target="_blank">linkedin.com/in/wassimans</a></li>
-          <li>Mastodon: <a href="https://mastodon.social/@wassimans" target="_blank">@wassimans@mastodon.social</a></li>
-          <li>Matrix: <a href="https://matrix.to/#/@wassimans:matrix.org" target="_blank">@wassimans:matrix.org</a></li>
-        </ul>
-      </p>
-      <p style="font-size: 17px; color: #1c1c1e;">
-        “Building a unified, cross-platform Polkadot library—one bound at a time!”
-      </p>
-    </section>
-  </div>
-
-  <footer>
-    <p>
-      © 2025 PolkaBind Project. All rights reserved.
-    </p>
-  </footer>
-</body>
+    <footer>
+      <p>© 2025 PolkaBind Project. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
