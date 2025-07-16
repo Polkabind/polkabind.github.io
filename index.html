@@ -148,16 +148,12 @@
         font-weight: 500;
       }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-    <script>
-      mermaid.initialize({
-        startOnLoad: true,
-        theme: "forest",
-        securityLevel: "loose",
-      });
-    </script>
   </head>
   <body>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true });
+    </script>
     <header>
       <h1>PolkaBind</h1>
       <p>
@@ -290,7 +286,7 @@
         <br />
         <br />
 
-        <div class="mermaid">
+        <pre class="mermaid">
 flowchart TB
   subgraph Polkabind["Polkabind"]
     direction TB
@@ -320,7 +316,7 @@ flowchart TB
   classDef concept    fill:#fff4e5,stroke:#ffa726,stroke-width:1px;
   classDef component  fill:#e3f2fd,stroke:#42a5f5,stroke-width:1px;
 
-        </div>
+        </pre>
       </section>
 
       <section id="features">
@@ -563,6 +559,3 @@ flowchart TB
     </footer>
   </body>
 </html>
-<!-- Local Variables: -->
-<!-- +format-on-save-enabled: nil -->
-<!-- End: -->
