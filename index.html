@@ -44,19 +44,26 @@
         color: #3c3c4399;
         margin: 4px 0;
       }
-      .hero-btn {
-        display: inline-block;
-        margin-top: 24px;
-        padding: 12px 32px;
-        background-color: #f2f2f7;
-        color: #0071e3;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: 500;
-        transition:
-          background-color 0.3s,
-          transform 0.3s;
-      }
+      header img.logo {
+       max-width: 160px;
+       height: auto;
+       display: block;
+       margin: 0 auto 24px auto;
+       border-radius: 16px;
+     }
+     .hero-btn {
+       display: inline-block;
+       margin-top: 24px;
+       padding: 12px 32px;
+       background-color: #f2f2f7;
+       color: #0071e3;
+       border-radius: 8px;
+       font-size: 16px;
+       font-weight: 500;
+       transition:
+         background-color 0.3s,
+         transform 0.3s;
+     }
       .hero-btn:hover {
         background-color: #e5e5ea;
         transform: translateY(-2px);
@@ -151,7 +158,7 @@
   </head>
   <body>
     <header>
-      <h1>PolkaBind</h1>
+      <img src="assets/logo.jpg" alt="PolkaBind Logo" class="logo" />
       <p>
         <strong
           >Seamless interaction with any Polkadot SDK based chain for Swift,
