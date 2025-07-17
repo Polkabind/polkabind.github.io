@@ -283,34 +283,34 @@
         <br />
 
         <pre class="mermaid">
-flowchart TB
-  subgraph Polkabind["Polkabind"]
-    direction TB
-    A1[Uses Subxt under the hood]:::concept
-    A2[Exposes a simple developer-oriented API/façade]:::concept
-    A1 --> A2
-  end
+          flowchart TB
+            subgraph Polkabind["Polkabind"]
+              direction TB
+              A1[Uses Subxt under the hood]:::concept
+              A2[Exposes a simple developer-oriented API/façade]:::concept
+              A1 --> A2
+            end
 
-  subgraph Components["Polkabind Consists Of"]
-    direction TB
-    B1[Native binary = Rust façade + Subxt]:::component
-    B2[Generated foreign-language library (FFI bindings)]:::component
-    B3[CI pipeline: auto-package & publish]:::component
-  end
+            subgraph Components["Polkabind Consists Of"]
+              direction TB
+              B1[Native binary = Rust façade + Subxt]:::component
+              B2[Generated foreign-language library FFI bindings]:::component
+              B3[CI pipeline: auto-package & publish]:::component
+            end
 
-  subgraph CI["CI Pipeline"]
-    direction TB
-    C1[On push to main repo]
-    C2[Build binary & generate bindings]
-    C3[Create & tag language packages]
-    C4[Publish packages to registries]
-    C1 --> C2 --> C3 --> C4
-  end
+            subgraph CI["CI Pipeline"]
+              direction TB
+              C1[On push to main repo]
+              C2[Build binary & generate bindings]
+              C3[Create & tag language packages]
+              C4[Publish packages to registries]
+              C1 --> C2 --> C3 --> C4
+            end
 
-  Polkabind --> Components --> CI
+            Polkabind --> Components --> CI
 
-  classDef concept    fill:#fff4e5,stroke:#ffa726,stroke-width:1px;
-  classDef component  fill:#e3f2fd,stroke:#42a5f5,stroke-width:1px;
+            classDef concept    fill:#fff4e5,stroke:#ffa726,stroke-width:1px;
+            classDef component  fill:#e3f2fd,stroke:#42a5f5,stroke-width:1px;
         </pre>
       </section>
 
@@ -504,18 +504,8 @@ flowchart TB
           <li>
             Github:
             <a href="https://github.com/Polkabind/polkabind" target="_blank"
-              >github.com/polkabind</a
-            >
+            >github.com/polkabind</a>
           </li>
-        </ul>
-      </section>
-
-      <section id="developer">
-        <h2>Developer Information</h2>
-
-        <p><strong>Lead Developer:</strong> Wassim Mansouri<br /></p>
-
-        <ul>
           <li>
             GitHub:
             <a href="https://github.com/wassimans" target="_blank"
@@ -553,7 +543,7 @@ flowchart TB
       <p>© 2025 PolkaBind Project. All rights reserved.</p>
     </footer>
     <script type="module">
-      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
       mermaid.initialize({ startOnLoad: true });
     </script>
   </body>
